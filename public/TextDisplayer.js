@@ -9,6 +9,7 @@ class TextDisplayer {
         span.style.left = window.innerWidth / 3 - span.offsetWidth / 2
         span.style.zIndex = 1000
         span.style.color = "white"
+        span.style.background = "#212121"
         document.body.appendChild(span)
         setTimeout(() => {
             const interval = setInterval(() => {

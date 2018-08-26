@@ -17,9 +17,11 @@
     </script>
     <script src="TextDisplayer.js">
     </script>
+    <script src="Config.js">
+    </script>
     <script>
         const rtc = new RTC(0, "TRAIN_INNOV")
-        const socket = io.connect('http://localhost:5000')
+        const socket = io.connect(SOCKET_IO_HOST)
         socket.on('send-feedback', (data) => {
             console.log(data)
             TextDisplayer.displayText(data)

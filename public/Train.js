@@ -78,6 +78,7 @@ class ChatBotStiml {
                         this.answers.splice(0, 1)
                         this.questions.splice(0, 1)
                         this.start()
+                        input.value = ""
                     }, 1000)
                 }
                 else {

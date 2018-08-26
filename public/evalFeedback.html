@@ -13,11 +13,13 @@
     </script>
     <script src="Rtc.js">
     </script>
+    <script src="Config.js">
+    </script>
     <script src="socket.io.js">
     </script>
     <script>
         const rtc = new RTC(1, "TRAIN_INNOV")
-        const socket = io.connect('http://localhost:5000')
+        const socket = io.connect(SOCKET_IO_HOST)
         const input = document.createElement('input')
         input.style.width = "68%"
         input.style.height = "8%"
@@ -41,6 +43,7 @@
         }
         button.onclick = () => {
             socket.emit('get-feedback', input.value.trim())
+            input.value = ""
         }
         button.innerHTML = "submit"
         document.body.appendChild(input)
