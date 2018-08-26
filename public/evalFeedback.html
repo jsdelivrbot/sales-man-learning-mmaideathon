@@ -1,0 +1,49 @@
+<body>
+    <head>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <div class="container">
+
+    </div>
+    <script src="https://cdn.agora.io/sdk/web/AgoraRTCSDK-2.1.0.js">
+    </script>
+    <script src="https://cdn.rawgit.com/lil-js/uuid/0.1.0/uuid.js">
+    </script>
+    <script src="js/bootstrap.js">
+    </script>
+    <script src="Rtc.js">
+    </script>
+    <script src="socket.io.js">
+    </script>
+    <script>
+        const rtc = new RTC(1, "TRAIN_INNOV")
+        const socket = io.connect('http://localhost:5000')
+        const input = document.createElement('input')
+        input.style.width = "68%"
+        input.style.height = "8%"
+        input.style.fontSize = window.innerHeight * 0.08
+        input.style.position = 'absolute'
+        input.style.top = "90%"
+        input.style.left = "2%"
+        const button = document.createElement('button')
+        button.style.width = "30%"
+        button.style.height = "10%"
+        button.style.fontSize = window.innerHeight * 0.08
+        button.style.position = 'absolute'
+        button.style.top = "90%"
+        button.style.left = "70%"
+        input.onkeyup = () => {
+            if (input.value.trim() == "") {
+                button.setAttribute('disabled', true)
+            } else {
+                button.removeAttribute('disabled')
+            }
+        }
+        button.onclick = () => {
+            socket.emit('get-feedback', input.value.trim())
+        }
+        button.innerHTML = "submit"
+        document.body.appendChild(input)
+        document.body.appendChild(button)
+    </script>
+</body>
