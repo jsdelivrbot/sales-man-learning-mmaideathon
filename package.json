@@ -9,7 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "mongoose": "^5.2.9"
+    "mongoose": "^5.2.9",
+    "seq-queue": "0.0.5",
+    "socket.io": "^2.1.1"
   }
 }
