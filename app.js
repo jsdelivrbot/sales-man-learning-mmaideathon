@@ -1,0 +1,15 @@
+const express = require('express')
+const app = express()
+const path = require('path')
+const mongoose = require('mongoose')
+const modelDao = require('./dao/ModelDao')
+const bodyParser = require('body-parser')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended : true}))
+app.use(express.static(path.join(__dirname, 'public')))
+const dbRouter = require('./dbRouter')(modelDao, (router) => {
+    app.use('/app', router)
+})
+app.listen(8000, () => {
+    console.log("starting the server")
+})
